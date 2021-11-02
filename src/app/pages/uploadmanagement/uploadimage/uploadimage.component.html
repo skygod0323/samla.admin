@@ -1,0 +1,279 @@
+<div class="upload-image">
+  <div class="main-content">
+    <div class="upload-area" *ngIf="!uploaded">
+      <input type="file" (change)="changeFile($event)" multiple>
+      <!-- <button class="btn btn-success" (click)="uploadImages()">Upload</button> -->
+    </div>
+    <div class="save-area" *ngIf="uploaded && forms.length > 0">
+      <div class="card" *ngFor="let form of forms; let i = index">
+        <form class="form-horizontal" [formGroup]="form">
+          <div class="card-content">
+            <div class="row">
+              <div class="col-md-3 col-md-offset-1">
+                <div class="form-left pl-3">
+                  <div class="img-wrapper">
+                    <img src="{{form.value.lowimageurl}}">
+                  </div>
+                  <div class="modelrelease">
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-7">
+                <div class="field">
+                  <div class="form-group label-floating title" [ngClass]="validate.displayFieldCss(form, 'title')">
+                    <label>TITLE</label>
+                    <input type="text" class="form-control" name="title" formControlName="title">
+                    <app-field-error-display [displayError]="validate.isFieldValid(form, 'title')"
+                      errorMsg="title is required">
+                    </app-field-error-display>
+                  </div>
+                </div>
+
+                <div class="field">
+                  <div class="form-group label-floating description"
+                    [ngClass]="validate.displayFieldCss(form, 'description')">
+                    <label>DESCRIPTION</label>
+                    <textarea type="text" class="form-control" name="description"
+                      formControlName="description"></textarea>
+                    <app-field-error-display [displayError]="validate.isFieldValid(form, 'description')"
+                      errorMsg="description is required">
+                    </app-field-error-display>
+                  </div>
+                </div>
+
+                <div class="field">
+                  <div class="form-group label-floating categories"
+                    [ngClass]="validate.displayFieldCss(form, 'categories')">
+                    <label>CATEGORIES</label>
+                    <mat-form-field>
+                      <mat-select formControlName="categories" multiple>
+                        <mat-option *ngFor="let category of categories" [value]="category.id">{{category.name}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                    <app-field-error-display [displayError]="validate.isFieldValid(form, 'categories')"
+                      errorMsg="categories is required">
+                    </app-field-error-display>
+                  </div>
+                </div>
+
+                <div class="field">
+                  <div class="form-group label-floating categories">
+                    <label>MODEL RELEASES</label>
+                    <mat-form-field>
+                      <mat-select formControlName="modelReleases" multiple>
+                        <mat-option *ngFor="let modelRelease of modelReleases" [value]="modelRelease.id">
+                          {{modelRelease.name}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="row">
+
+                  <div class="col-md-6">
+
+                    <div class="field">
+                      <div class="form-group label-floating name" [ngClass]="validate.displayFieldCss(form, 'name')">
+                        <label>FILENAME</label>
+                        <input type="text" class="form-control" name="name" formControlName="name" readonly>
+                        <app-field-error-display [displayError]="validate.isFieldValid(form, 'name')"
+                          errorMsg="name is required">
+                        </app-field-error-display>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+
+                    <div class="field">
+                      <div class="form-group label-floating photographer"
+                        [ngClass]="validate.displayFieldCss(form, 'photographer')">
+                        <label>PHOTOGRAHPER/CREATOR</label>
+                        <input type="text" class="form-control" name="photographer" formControlName="photographer">
+                        <app-field-error-display [displayError]="validate.isFieldValid(form, 'photographer')"
+                          errorMsg="photographer is required">
+                        </app-field-error-display>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+
+                <div class="row">
+
+
+
+                  <div class="col-md-6">
+
+                    <div class="field">
+                      <div class="form-group label-floating phone" [ngClass]="validate.displayFieldCss(form, 'phone')">
+                        <label>PHONE</label>
+                        <input type="text" class="form-control" name="phone" formControlName="phone">
+                        <app-field-error-display [displayError]="validate.isFieldValid(form, 'phone')"
+                          errorMsg="phone is required">
+                        </app-field-error-display>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+
+                    <div class="field">
+                      <div class="form-group label-floating email" [ngClass]="validate.displayFieldCss(form, 'email')">
+                        <label>EMAIL</label>
+                        <input type="text" class="form-control" name="email" formControlName="email">
+                        <app-field-error-display [displayError]="validate.isFieldValid(form, 'email')"
+                          errorMsg="email is required">
+                        </app-field-error-display>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="row">
+
+
+                  <div class="col-md-6">
+
+                    <div class="field">
+                      <div class="form-group label-floating sublocation"
+                        [ngClass]="validate.displayFieldCss(form, 'sublocation')">
+                        <label>SUBLOCATION</label>
+                        <input type="text" class="form-control" name="sublocation" formControlName="sublocation">
+                        <app-field-error-display [displayError]="validate.isFieldValid(form, 'photographer')"
+                          errorMsg="sublocation is required">
+                        </app-field-error-display>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+
+                    <div class="field">
+                      <div class="form-group label-floating city" [ngClass]="validate.displayFieldCss(form, 'city')">
+                        <label>CITY</label>
+                        <input type="text" class="form-control" name="city" formControlName="city">
+                        <app-field-error-display [displayError]="validate.isFieldValid(form, 'city')"
+                          errorMsg="city is required">
+                        </app-field-error-display>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="row">
+
+
+                  <div class="col-md-6">
+
+                    <div class="field">
+                      <div class="form-group label-floating country"
+                        [ngClass]="validate.displayFieldCss(form, 'country')">
+                        <label>COUNTRY</label>
+                        <input type="text" class="form-control" name="country" formControlName="country">
+                        <app-field-error-display [displayError]="validate.isFieldValid(form, 'country')"
+                          errorMsg="country is required">
+                        </app-field-error-display>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+
+                    <div class="field">
+                      <label>GPS (LONGITUDE/LATITUDE)</label>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group label-floating long"
+                            [ngClass]="validate.displayFieldCss(form, 'long')">
+                            <input type="text" class="form-control" name="long" formControlName="long">
+                            <app-field-error-display [displayError]="validate.isFieldValid(form, 'long')"
+                              errorMsg="long is required">
+                            </app-field-error-display>
+                          </div>
+                        </div>
+
+                        <div class="col-md-6">
+                          <div class="form-group label-floating lat" [ngClass]="validate.displayFieldCss(form, 'lat')">
+                            <input type="text" class="form-control" name="lat" formControlName="lat">
+                            <app-field-error-display [displayError]="validate.isFieldValid(form, 'lat')"
+                              errorMsg="lat is required">
+                            </app-field-error-display>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <!-- end row -->
+
+                <div class="tags">
+                  <div class="title">
+                    <label class="">TAGS</label>
+                  </div>
+                  <div class="newTag">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <input [(ngModel)]="tagInput[i]" placeholder="Add a new tag" class="form-control"
+                          formControlName="newTag">
+                      </div>
+                      <div class="col-md-6">
+                        <button class="btn btn-success" (click)="addTag(i)">Add</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="tagList">
+                    <div class="tag" *ngFor="let tag of tags[i]; let j = index">
+                      <button class="btn btn-info btn-round">
+                        {{tag}}
+                        <span class="close-icon" (click)="removeTag(i, j)">
+                          <i class="material-icons">
+                            close
+                          </i>
+                        </span>
+                      </button>
+
+
+                    </div>
+                  </div>
+                </div>
+
+
+
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+
+      <div class="btn-group text-right">
+        <button class="btn btn-success mr-2" style="margin-right: 20px" (click)="save()">
+          <span class="btn-label">
+            <i class="material-icons">check</i>
+          </span>
+          Save
+        </button>
+
+        <button class="btn btn-danger" (click)="cancel()">
+          <span class="btn-label">
+            <i class="material-icons">close</i>
+          </span>
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,67 @@
+<div class="main-content">
+  <div class="">
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-icon" data-background-color="purple">
+            <i class="material-icons">dashboard</i>
+          </div>
+          <div class="card-content">
+            <h4 class="card-title">Cagegory List</h4>
+
+            <div class="content table-responsive">
+              <table class="table table-striped">
+                <thead class="text-primary">
+                  <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Image Count</th>
+                    <th>Created TIme</th>
+                    <th>Updated TIme</th>
+                    <th class="disabled-sorting text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of categoryList; let i = index">
+                    <!-- <td>{{i}}</td> -->
+                    <td>{{i}}</td>
+                    <td class="">{{item.name}}</td>
+                    <td>{{item.imagecount}}</td>
+                    <td class="">{{item.created_at | date:'medium'}}</td>
+                    <td class="">{{item.updated_at | date:'medium'}}</td>
+                    <td class="text-right td-actions">
+                      <button class="btn btn-warning btn-icon edit" matTooltip="Edit" [matTooltipPosition]="'left'"
+                        (click)="editCategory(i)">
+                        <i class="material-icons">edit</i>
+                      </button>
+                      <!-- <button class="btn btn-danger btn-icon remove" matTooltip="Remove" [matTooltipPosition]="'left'"
+                        (click)="deleteUser(i)">
+                        <i class="material-icons">close</i>
+                      </button> -->
+                    </td>
+                  </tr>
+
+                  <tr *ngIf="!loading && categoryList.length == 0">
+                    <td colspan="6">No Category</td>
+                  </tr>
+                </tbody>
+              </table>
+
+            </div>
+
+            <div class="toolbar text-right">
+              <!--        Here you can write extra buttons/actions for the toolbar              -->
+              <button class="btn btn-success" (click)="createCategory()">Create New Category</button>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- end col-md-12 -->
+    </div>
+    <!-- end row -->
+  </div>
+</div>

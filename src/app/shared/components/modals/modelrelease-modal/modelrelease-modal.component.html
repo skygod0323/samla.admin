@@ -1,0 +1,32 @@
+<div class="">
+  <div class="title">
+    <h3 class="mt-0 mb-0">New Model Release</h3>
+  </div>
+
+  <input type="file" (change)="changeFile($event)" hidden id="fileInput">
+
+  <form class="form-horizontal" [formGroup]="form">
+    <div class="row">
+      <div class="col-md-10">
+        <div class="form-group label-floating is-empty">
+          <input type="text" class="form-control" name="name" formControlName="name" placeholder="File Name" readonly>
+          <!-- <app-field-error-display [displayError]="validate.isFieldValid(form, 'name')" errorMsg="name is required">
+          </app-field-error-display> -->
+        </div>
+      </div>
+      <div class="col-md-2">
+        <button type="button" class="btn btn-success upload-btn" (click)="trigerFileInput()">
+          <i class="material-icons">
+            cloud_upload
+          </i>
+        </button>
+
+      </div>
+    </div>
+
+    <div class="form-group form-button">
+      <button type="submit" class="btn btn-fill btn-success" (click)="apply()">Create</button>
+      <button type="submit" class="btn btn-fill btn-rose" (click)="cancel()">Cancel</button>
+    </div>
+  </form>
+</div>

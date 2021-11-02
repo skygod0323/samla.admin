@@ -1,0 +1,62 @@
+.image-list-table {
+  border-collapse:separate; 
+  border-spacing: 5px;
+
+  tbody {
+    font-size: 18px;
+    color: gray;
+  }
+ 
+  td, th {
+    background-color: white;
+  }
+
+  th {
+    padding: 20px;
+    font-weight: 400;
+  }
+  td {
+    padding: 10px 20px;
+  }
+
+  .img-container {
+    width: 120px;
+    max-height: 160px;
+    overflow: hidden;
+    display: block;
+    margin: auto;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .title {
+    font-size: 25px;
+    font-weight: bold;
+  }
+
+  .td-image {
+    border-top-left-radius: 7px;
+    border-bottom-left-radius: 7px;
+  }
+
+  .td-actions {
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+  }
+
+  
+}
+
+.search-wrapper {
+  padding: 5px;
+    
+  input {
+    width: 100%;
+    font-size: 20px;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #BEC0C2;
+  }
+}

@@ -1,0 +1,74 @@
+<div class="main-content">
+  <div class="">
+
+    <div class="search-wrapper">
+      <input class="" placeholder="Search for Images" [(ngModel)]="searchKey" (input)="filter()">
+    </div>
+
+    <div class="">
+      <div class="table-responsive">
+        <table class="table image-list-table">
+          <thead>
+            <tr>
+              <th class="" style="width: 15%">Thumbnail</th>
+              <th style="width: 30%">Title, filename & size</th>
+              <th class="" style="width: 20%">Categories & Upload date</th>
+              <th class="" style="width: 25%">Photographer & Model release</th>
+              <th class="text-center" style="width: 10%">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let item of filteredImageList; let i = index">
+              <tr></tr>
+              <tr></tr>
+              <tr>
+                <td rowspan="2" class="td-image">
+                  <div class="img-container">
+                    <img [src]="item.lowimageurl" alt="...">
+                  </div>
+                </td>
+                <td class="title">
+                  <span>{{item.title}}</span>
+                </td>
+                <td>
+                  <span class="">{{getCategoryString(item.categories)}}</span>
+                </td>
+                <td>
+                  <span>{{item.photographer}}</span>
+                </td>
+
+                <td class="td-actions text-center" rowspan="2">
+                  <button class="btn btn-warning btn-icon edit" matTooltip="Edit" [matTooltipPosition]="'left'"
+                    (click)="editImage(item.id)">
+                    <i class="material-icons">edit</i>
+                  </button>
+                  <button class="btn btn-danger btn-icon remove" matTooltip="Remove" [matTooltipPosition]="'left'"
+                    (click)="deleteImage(i)">
+                    <i class="material-icons">close</i>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td class="">
+                  <small>{{item.name}}</small>
+                </td>
+                <td>
+                  <span class="">{{item.created_at | date:'medium'}}</span>
+                </td>
+                <td>
+                  <span>{{getModelReleaseString(item.modelreleases)}}</span>
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="btn-group text-right">
+      <button class="btn btn-success mr-2" style="margin-right: 20px" (click)="newImages()">
+        Upload New Images
+      </button>
+    </div>
+  </div>
+</div>

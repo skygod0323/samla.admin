@@ -1,0 +1,132 @@
+<div class="main-content">
+    <div class="container-fluid" *ngIf="isLoaded">
+        <div class="summary">
+            <h3>Summary</h3>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="card card-stats">
+                        <div class="card-header" data-background-color="orange">
+                            <i class="material-icons">weekend</i>
+                        </div>
+                        <div class="card-content">
+                            <p class="category">Images</p>
+                            <h3 class="card-title">{{info.imageCount}}</h3>
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                                <i class="material-icons text-danger">local_offer</i>
+                                <a routerLink="/upload-management/image-list">Detail...</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="card card-stats">
+                        <div class="card-header" data-background-color="red">
+                            <i class="material-icons">equalizer</i>
+                        </div>
+                        <div class="card-content">
+                            <p class="category">Downloads</p>
+                            <h3 class="card-title">{{info.downloadCount}}</h3>
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                                <i class="material-icons text-danger">local_offer</i>
+                                <a>Detail...</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="card card-stats">
+                        <div class="card-header" data-background-color="green">
+                            <i class="material-icons">store</i>
+                        </div>
+                        <div class="card-content">
+                            <p class="category">Cateogries</p>
+                            <h3 class="card-title">{{info.categoryCount}}</h3>
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                                <i class="material-icons text-danger">local_offer</i>
+                                <a routerLink="/upload-management/category-list">Detail...</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="card card-stats">
+                        <div class="card-header" data-background-color="blue">
+                            <i class="fa fa-twitter"></i>
+                        </div>
+                        <div class="card-content">
+                            <p class="category">Model Releases</p>
+                            <h3 class="card-title">{{info.modelReleaseCount}}</h3>
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                                <i class="material-icons text-danger">local_offer</i>
+                                <a routerLink="/upload-management/modelrelease-list">Detail...</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="featured_images">
+            <br>
+            <h3>Most downloaded Images</h3>
+            <br>
+            <div class="row">
+                <div class="col-lg-4 col-md-6" *ngFor="let image of info.images">
+                    <div class="card card-product">
+                        <div class="card-image">
+                            <img [src]="image.imageurl" class="d-inline d-md-none" />
+                            <div [ngStyle]="{'background-image': 'url(' + image.imageurl + ')'}"
+                                class="image d-none d-md-block"></div>
+                        </div>
+                        <div class="card-content">
+                            <!-- <div class="card-actions">
+                                <button type="button" class="btn btn-danger btn-simple fix-broken-card">
+                                    <i class="material-icons">build</i> Fix Header!
+                                </button>
+                                <button type="button" class="btn btn-default btn-simple" matTooltip="View"
+                                    [matTooltipPosition]="'below'">
+                                    <i class="material-icons">art_track</i>
+                                </button>
+                                <button type="button" class="btn btn-success btn-simple" matTooltip="Edit"
+                                    [matTooltipPosition]="'below'">
+                                    <i class="material-icons">edit</i>
+                                </button>
+                                <button type="button" class="btn btn-danger btn-simple" matTooltip="Remove"
+                                    [matTooltipPosition]="'below'">
+                                    <i class="material-icons">close</i>
+                                </button>
+                            </div> -->
+                            <h4 class="card-title">
+                                <a href="#pablo">{{image.title}}</a>
+                            </h4>
+                            <div class="card-description">
+                                {{image.description}}
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="price">
+                                <h4>Downloads</h4>
+                            </div>
+                            <div class="stats pull-right">
+                                <p class="category">{{image.downloads}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="btn-group text-right">
+            <button class="btn btn-success" (click)="goToUpload()">
+                Upload Images
+            </button>
+        </div>
+    </div>
+</div>

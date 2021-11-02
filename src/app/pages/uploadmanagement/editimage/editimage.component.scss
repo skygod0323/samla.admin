@@ -1,0 +1,48 @@
+.main-content {
+  .card-content {
+    padding-top: 60px;
+
+    .form-group {
+      margin-top: 0;
+    }
+
+    .title {
+      input {
+        font-size: 25px;
+      }
+    }
+
+    .field {
+      margin-bottom: 15px;
+    }
+  }
+
+  .mat-form-field {
+    width: 100%!important;
+  } 
+
+  .tags {
+    margin-top: 20px;
+  }
+
+  .tag {
+    display: inline-block;
+    position: relative;
+    margin-right: 10px;
+
+    button {
+      text-transform: none;
+      padding: 12px;
+    }
+
+    .close-icon {
+      display: inline-block;
+      line-height: 12px;
+      margin-left: 5px;
+
+      .material-icons {
+        font-size: 15px;
+      }
+    }
+  }
+}
